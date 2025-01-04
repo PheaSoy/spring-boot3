@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        configs:
+          default:
+            slidingWindowSize: 5
+            failureRateThreshold: 50
+            minimumNumberOfCalls: 3
+            waitDurationInOpenState: 10s
+          bank-a-service:
+            base-config: default
+            waitDurationInOpenState: 15s
+          bank-b-service:
+            base-config: default
+            slidingWindowSize: 10
+          bank-c-service:
+            base-config: default
+            failureRateThreshold: 60

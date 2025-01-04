@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        instances:
+          default:
+            sliding-window-type: COUNT_BASED
+            sliding-window-size: 5
+            failure-rate-threshold: 50
+            minimum-number-of-calls: 3
+            wait-duration-in-open-state: 10s
+            permitted-number-of-calls-in-half-open-state: 2
